@@ -1,0 +1,167 @@
+<div ng-controller="signUpController">
+	<div class="main" ng-show="form_partA">
+
+	    <div class="main-screen">
+
+	      	<div class="main-head">
+		        <div class="main-title">
+		          Recre<span class="main-title-u">U</span>
+		        </div>
+
+		        <div class="main-subtitle">
+		          "Explora nuevas actividades y participa de experiencias inolvidables"
+		        </div>
+	      	</div> 
+
+			<div class="alert alert-danger" ng-class="{'hide': error_general_visible}">
+			  <strong>Error: </strong>{{ msg_error_general }}
+			</div>
+
+	      	<form name="postSignUpForm_first" ng-submit="postSignUp_first()" >
+
+	      		<div name="input_correo_electronico">
+		      		<label class="alert-input-message" ng-class="{'hide': correo_usuario_valido}">{{correo_usuario_error_msg}}</label>
+
+					<div class="input-group bottom_separator_small" ng-class="{'has-error': !correo_usuario_valido}">
+					  	<span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+					  	<input ng-model="correo_usuario" name="input_correo_usuario" type="text" class="form-control" placeholder="Correo Institucional" title="Ingrese su correo institucional" maxlength="45"></input>
+						<span class="input-group-addon">@usach.cl</span>
+					</div>
+				</div>
+
+				<div name="input_password">
+
+		      		<label class="alert-input-message" ng-class="{'hide': password_usuario_valido}">{{password_usuario_error_msg}}</label>
+
+					<div class="input-group bottom_separator_small" ng-class="{'has-error': !password_usuario_valido}">
+					  <span class="input-group-addon"><i class="fa fa-key fa-1"></i></span>
+					  <input ng-model="password_usuario" type="password" class="form-control" placeholder="Contraseña" title="Ingrese la contraseña que desea registrar" maxlength="45"></input>
+					</div>	
+
+		      	</div>
+
+			      	<div class="btn-group btn-group-justified " role="group" aria-label="...">
+
+				      	<a class="btn btn-danger" ng-click="go('')"><span class="glyphicon glyphicon-chevron-left" style="margin-right: 15px;"></span>VOLVER</a>
+
+				      	<a class="btn btn-primary" ng-click="submitForm_first()">CONTINUAR<span class="glyphicon glyphicon-chevron-right" style="margin-left: 15px;"></span></a>
+
+			      	</div>
+
+			</form>
+
+	    </div>
+	</div>
+
+
+	<div class="main main_xl" ng-show="form_partB">
+
+	    <div class="main-screen">
+
+	      	<div class="main-head">
+		        <div class="main-title">
+		          Recre<span class="main-title-u">U</span>
+		        </div>
+
+		        <div class="main-subtitle">
+		          "Solo un poco más!"
+		          <br>
+		          Rellena con tus datos personales
+		        </div>    
+	      	</div> 
+	      	
+			<div class="alert alert-danger" ng-class="{'hide': error_general_visible}">
+			  <strong>Error:</strong>{{ msg_error_general }}
+			</div>
+
+
+	      	<form class="SignUpForm_Second" name="postSignUpForm_second" ng-submit="postSignUp_second()" >
+
+	      		<div name="input_primer_nombre">
+		      		<label class="alert-input-message" ng-class="{'hide': primer_nombre_usuario_valido}">{{primer_nombre_error_msg}}</label>
+
+					<div class="input-group bottom_separator_small" ng-class="{'has-error': !primer_nombre_usuario_valido}">
+					  	<span class="input-group-addon">Primer Nombre (*)</span>
+					  	<input ng-model="primer_nombre_usuario" type="text" class="form-control" title="Ingrese su primer nombre (obligatorio)"></input>
+					</div>
+				</div>
+
+	      		<div name="input_segundo_nombre">
+		      		<label class="alert-input-message" ng-class="{'hide': segundo_nombre_usuario_valido}">{{segundo_nombre_error_msg}}</label>
+
+					<div class="input-group bottom_separator_small" ng-class="{'has-error': !segundo_nombre_usuario_valido}" >
+				  		<span class="input-group-addon">Segundo Nombre</span>
+				  		<input ng-model="segundo_nombre_usuario" type="text" class="form-control" title="Ingrese su segundo nombre"></input>
+					</div>
+				</div>
+
+	      		<div name="input_apellido_paterno">
+		      		<label class="alert-input-message" ng-class="{'hide': apellido_paterno_usuario_valido}">{{apellido_paterno_error_msg}}</label>
+
+					<div class="input-group bottom_separator_small" ng-class="{'has-error': !apellido_paterno_usuario_valido}" >
+				  		<span class="input-group-addon">Apellido Paterno (*)</span>
+				  		<input ng-model="apellido_paterno_usuario" type="text" class="form-control"  title="Ingrese su apellido paterno (obligatorio)"></input>
+					</div>
+				</div>
+
+	      		<div name="input_apellido_materno">
+		      		<label class="alert-input-message" ng-class="{'hide': apellido_materno_usuario_valido}">{{apellido_materno_error_msg}}</label>
+
+					<div class="input-group bottom_separator_small" ng-class="{'has-error': !apellido_materno_usuario_valido}" >
+				  		<span class="input-group-addon">Apellido Materno</span>
+				  		<input ng-model="apellido_materno_usuario" type="text" class="form-control" title="Ingrese su apellido materno"></input>
+					</div>
+				</div>
+
+				<div name="input_fecha_nacimiento">
+		      		<label class="alert-input-message" ng-class="{'hide': fecha_nacimiento_valida}">{{fecha_nacimiento_error_msg}}</label>
+
+					<div class="input-group bottom_separator_small" ng-class="{ 'has-error': !fecha_nacimiento_valida} ">
+						<span class="input-group-addon">Fecha de nacimiento (dd/mm/aaaa) (*)</span>
+						<input ng-model="fecha_nacimiento" type="text" class="form-control" uib-datepicker-popup="{{fecha_nacimiento_formato}}" ng-change="chequearFechaNacimiento()"></input>
+					</div>
+				</div>
+
+			    <div name="input_sexo">
+		      		<label class="alert-input-message" ng-class="{'hide': sexo_usuario_valido}">{{sexo_error_msg}}</label>
+
+					<div class="bottom_separator_small" >
+						<select ng-model="selected_sexo_usuario" class="form-control" ng-options="s as s.name for s in sexos" ng-class="{ 'has-error': !sexo_usuario_valido}" >
+							<option class="placeholder" value="" disabled>- Sexo del usuario -</option>
+						</select>
+					</div>
+				</div>
+
+		      	<div class="btn-group btn-group-justified " role="group" aria-label="...">
+
+			      	<a class="btn btn-danger" ng-click="show_first_form()"><span class="glyphicon glyphicon-chevron-left" style="margin-right: 15px;"></span>VOLVER</a>
+
+			      	<a class="btn btn-success" ng-click="submitForm_second()">REGISTRAR<span class="glyphicon glyphicon-chevron-right" style="margin-left: 15px;"></span></a>
+
+		      	</div>
+			</form>
+
+
+
+	    </div>
+	</div>
+
+	<div class="main" ng-show="form_partC">
+
+	    <div class="main-screen">
+
+	      	<div class="main-head">
+		        <div class="main-title">
+		          Recre<span class="main-title-u">U</span>
+		        </div>
+
+		        <div class="main-subtitle">
+		          <h1>"Te has registrado exitosamente"</h1>
+		          <h5>En unos momentos serás redirigido a la ventana principal. Tambien puedes ser redirigido manualmente presionando el siguiente enlace <a ng-click="go('/');">[x].</a></h5>
+		        </div>    
+	      	</div> 
+
+	    </div>
+	</div>
+
+</div>

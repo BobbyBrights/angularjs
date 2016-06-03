@@ -1,0 +1,90 @@
+<div ng-controller="exploracionController">
+
+    <!-- Barra de navegación -->
+    <div ng-include="'/views/componentes/navigation_bar.html'"></div>
+
+    <div class="container-fluid" style="margin-top: 51px; padding: 0px">
+
+      <div class="row" style="margin-left: 0px; margin-right: 0px">
+
+        <div class="col-sm-3 col-lg-2">
+          <nav class="navbar navbar-default navbar-fixed-side">
+            <div class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
+                <ul class="nav navbar-nav">
+                  <li ng-class="{'active': btn_explore_selected}" ng-click="go('explora');">
+                    <a><i class="fa fa-globe fa-1" style="margin-right: 15px"></i>Explora</a>
+                  </li>
+                  <li ng-class="{'active': btn_mis_actividades_selected}" ng-click="go('explora/mis_actividades');">
+                    <a><i class="fa fa-futbol-o fa-1" style="margin-right: 15px"></i>Mis Actividades</a>
+                  </li>
+                  <li ng-class="{'active': btn_notificaciones_selected}" ng-click="go('explora/mis_notificaciones');">
+                    <a><i class="fa fa-exclamation-circle fa-1" style="margin-right: 15px"></i>Mis Notificaciones</a>
+                  </li>  
+
+                  <li class="dropdown open">
+                  <ul class="dropdown-menu" style="margin-top: 20px;"> 
+                    <li class="dropdown-header">Filtrar por categorías: </li>
+                    <li ng-click="mostrarTodos();" ng-class="{'active': categoria_seleccionada
+ == undefined}"><a> Todas las categorías</a>
+                    <li ng-repeat="x in categorias" ng-class="{'active': categoria_seleccionada
+ == x.nombreCategoria}" ng-click="cambiarCategoria(x.nombreCategoria)"><a>{{ x.nombreCategoria }}</a></li>
+                  </ul>
+                  </li>
+
+
+                </ul>
+                   <li ng-class="{'active': btn_notificaciones_selected}" ng-click="go('reportes');">
+                    <a><i class="fa fa-exclamation-circle fa-1" style="margin-right: 15px"></i>Administracion</a>
+                  </li>  
+
+
+              </div>           
+          </nav>
+
+        </div>
+
+        <div class="col-sm-9 col-lg-10" style="padding: 0px">
+            <div ng-include="'views/componentes/jumbotron-sidenav.html'"></div>
+
+            <div class="contenedor" infinite-scroll="agregarMasActividades()">
+
+              <div class="row">
+
+                    <div class="col-md-12">
+
+                        <div class="row" ng-repeat="t in indice_row_actividades" >
+
+                            <div ng-repeat="a in actividades.slice(t, t+3)" class="col-sm-4 col-lg-4 col-md-4">
+                                  <div  popover-append-to-body="true" 
+                                        class="thumbnail actividad" 
+                                        popover-placement="bottom" uib-popover="{{formatear_popover(a)}}" 
+                                        popover-trigger="mouseenter"
+                                        ng-click="verActividad(a.actividadId)">
+
+                                    <div class="titulo">{{ a.tituloActividad }}</di>
+
+                                    <div class="imagen">
+                                      <img ng-src="images/categorias/{{a.tipo.categoria.nombreCategoria}}/{{ a.tipo.tipo}}.png" alt={{a.tipo.tipo}}>
+                                    </div>
+
+                                    <div class="cuerpo">
+                                        {{ a.tipo.tipo }}<br>
+                                        {{ funcion(a.fechaInicio) }}
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+              </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>

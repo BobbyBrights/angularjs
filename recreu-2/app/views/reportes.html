@@ -1,0 +1,52 @@
+<!-- Barra de navegación -->
+<div ng-include="'/views/componentes/navigation_bar.html'"></div>
+
+<!-- Jumbotron -->
+<div ng-include="'views/componentes/jumbotron.html'"></div>
+
+<!-- Botones principales -->
+<div ng-include="'views/componentes/botones_principales.html'"></div>
+
+<div class="contenedor" infinite-scroll="agregarMasActividades()">
+
+
+
+
+    <div class="form-group row">
+      <label class="col-sm-3 form-control-label">usuarios :</label>
+      <div class="col-sm-9">
+        <select multiple class="form-control"  ng-model = "eliminar">
+         <option ng-repeat = "us in usuarios"  class="form-control" value={{us.usuarioId}} > {{us.correo}} </option>
+       </select>
+      </div>
+    </div>
+
+<table class="table" ng-repeat="elim in eliminar">
+  
+</table>
+
+
+
+    <table class="table" ng-if="eliminar!=null">
+    <thead>
+        <tr>
+            <th>correo</th>
+            <th>nombre completo</th>
+            <th>ultimo ingreso</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody ng-repeat="elim in eliminar" >
+        <tr>
+
+            <td>{{usuarios[elim-1].correo}} </td>
+            <td>{{usuarios[elim-1].primerNombre + " " + usuarios[elim-1].apellidoPaterno + " " + usuarios[elim-1].apellidoMaterno}}</td>
+            <td>{{usuarios[elim-1].lastUpdate}}</td>
+            <td><button type="button" class="btn btn-default"   ng-click ="eliminarUsuario(elim);  ">eliminar! </button></td>
+
+        </tr>
+
+    </tbody>
+</table>
+
+

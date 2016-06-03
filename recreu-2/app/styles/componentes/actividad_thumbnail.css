@@ -1,0 +1,41 @@
+.thumbnail.actividad
+{
+	font-family: AvenirPro_Cn;
+	text-align: center;
+	height: 100%;
+	margin-bottom: 5%;
+	cursor: pointer;
+}
+
+.thumbnail.actividad .titulo{
+	font-size: 20px;
+	margin-top: 15px;
+	margin-left: 6%;
+	margin-right: 6%;
+
+	width: 88%;
+}
+
+.thumbnail.actividad .imagen{
+	margin-left: 25%;
+	margin-right: 25%;
+}
+.thumbnail.actividad .imagen img{
+	width: 50%;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	height: 118px;
+	width: auto;
+}
+
+
+.thumbnail.actividad .cuerpo{
+	font-size: 20px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	margin-left: 6%;
+	margin-right: 6%;
+	width: 88%;
+    height: 50px;
+    overflow: hidden;
+}

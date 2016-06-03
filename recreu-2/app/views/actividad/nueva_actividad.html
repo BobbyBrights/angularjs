@@ -1,0 +1,129 @@
+<div ng-controller="nuevaActividadController">
+
+    <!-- Barra de navegación -->
+    <div ng-include="'/views/componentes/navigation_bar.html'"></div>
+
+    <div class="container-fluid" style="margin-top: 51px; padding: 0px">
+
+      <div class="row" style="margin-left: 0px; margin-right: 0px">
+
+        <div class="col-sm-3 col-lg-2">
+          <nav class="navbar navbar-default navbar-fixed-side">
+            <div class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
+                <ul class="nav navbar-nav">
+                  <li ng-class="{'active': btn_explore_selected}" ng-click="go('explora');">
+                    <a><i class="fa fa-globe fa-1" style="margin-right: 15px"></i>Explora</a>
+                  </li>
+                  <li ng-class="{'active': btn_mis_actividades_selected}" ng-click="go('explora/mis_actividades');">
+                    <a><i class="fa fa-futbol-o fa-1" style="margin-right: 15px"></i>Mis Actividades</a>
+                  </li>
+                  <li ng-class="{'active': btn_notificaciones_selected}" ng-click="go('explora/mis_notificaciones');">
+                    <a><i class="fa fa-exclamation-circle fa-1" style="margin-right: 15px"></i>Mis Notificaciones</a>
+                  </li>  
+                </ul>
+              </div>           
+          </nav>
+        </div>
+
+        <div class="col-sm-9 col-lg-10" style="padding: 0px">
+          <div ng-include="'views/componentes/jumbotron-sidenav.html'"></div>
+
+          <div class="contenedor-recreu row" style="margin-left: 0px; margin-right: 0px; background-color: #FBFBFB;">
+            <div class="contenedor-form" style="margin: 10% 10%;">
+                
+              <div class="alert alert-danger" ng-if="exito==0"> Por favor ingrese todos los datos en el formato correcto</div>
+              <div class="alert alert-success" ng-if="exito==1"> Actividad creada correctamente!</div>
+
+              <div name="input_titulo_actividad">
+                <label class="alert-input-message" ng-class="{'hide': titulo_actividad_valido}">{{titulo_actividad_msg_error}}</label>
+
+                <div class="input-group bottom_separator_small" ng-class="{'has-error': !titulo_actividad_valido}">
+                  <span class="input-group-addon xl">Título: (*)</span>
+                  <input ng-model="nuevaActividad.tituloActividad" type="text" class="form-control" title="Ingrese el título de la actividad (obligatorio)" placeholder="Titulo de la actividad"></input>
+                </div>
+              </div>
+
+              <div name="input_cantidad_participantes">
+                <label class="alert-input-message" ng-class="{'hide': ctdad_participantes_valido}">{{ctdad_participantes_msg_error}}</label>
+
+                <div class="input-group bottom_separator_small" ng-class="{'has-error': !ctdad_participantes_valido}">
+                  <span class="input-group-addon xl">Cantidad de participantes: (*)</span>
+                  <input  class="form-control" placeholder="Cantidad de participantes requeridos" title="Ingrese la cantidad de participantes requeridos">
+                </div>
+              </div>
+
+              <div name="input_requisitos_actividad">
+                <div class="input-group bottom_separator_small" ng-class="{'has-error': !requisitos_actividad_valido}">
+                  <span class="input-group-addon xl">Requisitos: </span>
+                  <textarea class="form-control non-resizable" rows="3" placeholder="Requisitos de la actividad" title="Ingresa una descripción de los requisitos necesarios para participar actividad" ng-model="nuevaActividad.requerimientosActividad"></textarea>
+                </div>
+              </div>
+
+              <div name="input_descripcion_actividad">
+                <div class="input-group bottom_separator_small" ng-class="{'has-error': !descripcion_actividad_valido}">
+                  <span class="input-group-addon xl">Descripción: </span>
+                  <textarea class="form-control non-resizable" rows="5"d placeholder="Descripción de la actividad" title="Ingresa una descripción de la actividad" ng-model="nuevaActividad.cuerpoActividad"></textarea>
+                </div>
+              </div>
+
+              <div name="input_fecha_actividad">
+                <div class="input-group bottom_separator_small" ng-class="{'has-error': !fecha_actividad_valido}">
+                  <span class="input-group-addon xl">Fecha (*): </span>
+                  <input class="form-control" data-format="yyyy-MM-dd" type="date"  >
+                </div>
+              </div>
+
+              <div name="input_duracion_actividad">
+                <div class="input-group bottom_separator_small" ng-class="{'has-error': !duracion_actividad_valido}">
+                  <span class="input-group-addon xl">Horario (*): </span>
+                  <input  class="form-control" time-format="hh:mm:ss" type="time"  >
+                </div>
+              </div>
+
+              <div name="input_categoria_actividad">
+                <div class="input-group bottom_separator_small" ng-class="{'has-error': !categoria_actividad_valido}">
+                  <span class="input-group-addon xl">Categoría (*): </span>
+                  <select class="form-control" ng-model = "catId" ng-click = "actualizarTipos(); categoriaSelectId=catId;">
+                   <option ng-repeat = "cat in categorias" value={{cat.categoriaId}} class="form-control non-resizable" rows="5"d > {{cat.nombreCategoria}} </option>
+                 </select>
+                </div>
+              </div>
+
+              <div name="input_tipo_actividad" ng-if="catId!=null">
+                <div class="input-group bottom_separator_small" ng-class="{'has-error': !tipo_actividad_valido}">
+                  <span class="input-group-addon xl">Tipo de actividad (*): </span>
+                  <select class="form-control" ng-model = "tipId" ng-click ="nuevaActividad.tipoId=tipId[0];">
+                   <option ng-repeat = "tip in tipos" value={{tip.tipoId}} class="form-control non-resizable" rows="5"d > {{tip.tipo}} 
+                   </option>
+                   </select>                
+                </div>
+              </div>          
+
+              <div name="input-ubicacion-actividad">
+                <div class="input-group bottom_separator_small" ng-class="{'has-error': !ubicacion_actividad_valido}">
+                  <span class="input-group-addon xl">Ubicación: </span>
+                  <div ng-controller="mapCtrl">
+                      <ui-gmap-google-map center="map.center" 
+                            zoom="map.zoom" 
+                            draggable="true" 
+                            options="map.options" 
+                            control="map.control"
+                            events="map.events" 
+                            class="main-container" >
+                      <ui-gmap-marker coords="marker.coords"  options="marker.options" idkey="marker.id" ></ui-gmap-marker>      
+                      </ui-gmap-google-map>
+                  </div>
+                </div>
+              </div>
+
+                <a type="button" class="btn btn-primary" style="width: 100%;" ng-click="crearActividad();" >Crear Actividad!</a>
+              
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+

@@ -1,0 +1,37 @@
+.u-jumbotron{
+	background-image: url('/images/lion.jpg');
+	background-repeat: no-repeat;
+	background-position-x: 100%;
+	background-color: black;
+	margin-top: 51px;
+	margin-bottom: 0px;
+	margin-left: 0%;
+	margin-right: 0%;
+	width: 100%;
+	background-position: right 0px top;
+}
+.u-jumbotron.sidenav{
+	margin-top: 0px;
+}
+.u-jumbotron .contenido,
+.u-jumbotron.sidenav .contenido{
+	margin-right: 17%;
+	padding-bottom: 20.5px;
+	min-height: 160px;
+
+}
+
+.u-jumbotron h1,
+.u-jumbotron.sidenav h1{
+	font-family: AvenirPro_DemiCnIt;
+	letter-spacing: 2px;
+	color: #FB7E08; //colorNaranjo
+
+}
+
+.u-jumbotron p,
+.u-jumbotron.sidenav p{
+	font-family: AvenirPro_Cn;
+	color: #FFFBF8; //colorBlanco
+	text-align: justify;
+}

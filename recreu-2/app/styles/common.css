@@ -1,0 +1,185 @@
+
+.square-borders{
+	border-radius: 0px;
+}
+
+a{
+	cursor: pointer;
+}
+
+a.navbar-brand{
+	cursor: pointer;
+	padding: 5px 20px;
+}
+
+a.navbar-brand img{
+	min-height: 40px;
+	max-height: 40px;
+}
+
+textarea.non-resizable{
+	resize: none;
+
+}
+
+::-webkit-input-placeholder {
+    color: red;
+    text-align: center;
+}
+:-moz-placeholder {
+    /* Firefox 18- */
+    color: red;
+    text-align: center;
+}
+::-moz-placeholder {
+    /* Firefox 19+ */
+    color: red;
+    text-align: center;
+}
+:-ms-input-placeholder {
+    color: red;
+    text-align: center;
+    }
+
+
+.main-content{
+	padding-top: 12.5%;
+	padding-left: 20%;
+	padding-right: 20%;
+	text-align: center;
+}
+
+.fullWidth{
+	width: 100%;
+}
+
+.bottom_separator_xs{
+	margin-bottom: 5px;
+}
+
+.bottom_separator_small{
+	margin-bottom: 10px;
+}
+
+.bottom_separator_md{
+	margin-bottom: 15px;
+}
+
+.bottom_separator_large{
+	margin-bottom: 20px;
+}
+
+.bottom_separator_xl{
+	margin-bottom: 25px;
+}
+
+.alert-input-message{
+  	font-family: Typomancer_Lounge;
+	  display: inline;
+	  padding: .6em .6em .3em;
+	  font-size: 90%;
+	  font-weight: bold;
+	  line-height: 1;
+	  color: #ffffff;
+	  text-align: center;
+	  white-space: nowrap;
+	  vertical-align: baseline;
+	  border-radius: .25em;
+	  background-color: #d9534f;
+}
+
+.navbar li.dropdown.custom{
+	font-family: Typomancer_Lounge;
+}
+
+.navbar li.dropdown.custom li{
+	margin-right: 50px;
+	width: 100%;
+}
+
+
+.navbar li.dropdown.custom.open .dropdown-toggle{
+	background-color: transparent;
+}
+  
+
+
+.navbar-menu{
+	position:relative; 
+	top:-50.5px; 
+
+}
+
+.navbar-menu .btn-group{
+	width: 90%;
+	margin-left: 5%;
+	border-radius: 25px;	
+
+}
+.navbar-menu .btn-group .btn{
+	border-radius: 10px;
+
+}
+
+.btn-recreU.selected {
+  color: white;
+  background-color: #FB7E08; //colorNaranjo
+  border-color: transparent;
+}
+
+.btn-recreU.selected:hover{
+  color: white;
+  background-color: #FB7E08; //colorNaranjo
+
+}
+
+.btn-recreU{
+	color: white;
+	background-color: #2E2E2E; //colorOscuro
+  	border-color: transparent;
+}
+
+.btn-recreU:hover{
+	color: white;
+	font-weight: bolder;
+	background-color: gray; //colorNaranjo
+}
+
+.btn-group-custom .btn{
+	border-radius: 0px;
+}
+
+.main-container{
+	margin-top: 50px;
+}
+
+.main-container .main-container-body{
+	background-color: #FFFBF8; /* colorBlanco */
+	padding: 25px 10%;
+}
+
+.btn{
+	font-family: AvenirPro_Cn; 
+}
+
+.contenedor{
+	margin-top: 5%;
+	margin-left: 5%;
+	width: 90%;
+}
+
+.popover  {
+	max-height: 20%;
+	max-width: 100%;
+	float: left;
+	overflow:hidden;
+	text-overflow: ellipsis;
+}
+
+.popover-content {
+	max-height: 50%;
+	white-space: pre;
+	font-family: AvenirPro_Cn; 	
+}
+
+.angular-google-map-container { height: 400px; }

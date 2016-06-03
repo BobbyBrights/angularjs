@@ -1,0 +1,37 @@
+.contenedor-recreu{
+	font-family: AvenirPro_Cn;
+}
+
+.contenedor-recreu .thumbnail .title{
+	font-size: 40px;
+}
+
+.contenedor-recreu .thumbnail .cuerpo{
+	margin-left: 5%;
+	font-size: 15px;
+	text-align: justify;
+}
+
+.contenedor-recreu .thumbnail .buttons{
+	margin-left: 5%;
+}
+
+.contenedor-recreu .thumbnail .buttons a.btn{
+	min-width: 25%;
+}
+
+.contenedor-recreu h1,
+.contenedor-recreu h2,
+.contenedor-recreu h3,
+.contenedor-recreu h4,
+.contenedor-recreu h5,{
+	font-family: AvenirPro_Cn;
+}
+
+ul.dropdown-menu li.active a{
+	color: red;
+}
+
+.input-group-addon.xl{
+	min-width: 200px;
+}

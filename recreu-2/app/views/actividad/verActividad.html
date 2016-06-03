@@ -1,0 +1,76 @@
+<div ng-controller="verActividadController">
+
+    <!-- Barra de navegación -->
+    <div ng-include="'/views/componentes/navigation_bar.html'"></div>
+
+    <div class="container-fluid" style="margin-top: 51px; padding: 0px">
+
+      <div class="row" style="margin-left: 0px; margin-right: 0px">
+
+        <div class="col-sm-3 col-lg-2">
+          <nav class="navbar navbar-default navbar-fixed-side">
+            <div class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
+                <ul class="nav navbar-nav">
+                  <li ng-class="{'active': btn_explore_selected}" ng-click="go('explora');">
+                    <a><i class="fa fa-globe fa-1" style="margin-right: 15px"></i>Explora</a>
+                  </li>
+                  <li ng-class="{'active': btn_mis_actividades_selected}" ng-click="go('explora/mis_actividades');">
+                    <a><i class="fa fa-futbol-o fa-1" style="margin-right: 15px"></i>Mis Actividades</a>
+                  </li>
+                  <li ng-class="{'active': btn_notificaciones_selected}" ng-click="go('explora/mis_notificaciones');">
+                    <a><i class="fa fa-exclamation-circle fa-1" style="margin-right: 15px"></i>Mis Notificaciones</a>
+                  </li>  
+                </ul>
+              </div>           
+          </nav>
+        </div>
+
+        <div class="col-sm-9 col-lg-10" style="padding: 0px">
+            <div ng-include="'views/componentes/jumbotron-sidenav.html'"></div>
+
+			<div class="contenedor-recreu">
+				<div class="row" style="margin-left: 0px; margin-right: 0px">
+					<div class="col-sm-6">
+					    <ui-gmap-google-map
+					    		ng-if = "actividad != undefined"
+					    		center="map.center" 
+					          	zoom="map.zoom" 
+					          	draggable="true" 
+					          	options="map.options" 
+					          	control="map.control"
+					          	events="map.events" 
+					          	class="main-container">
+				        <ui-gmap-marker coords="marker.coords" options="marker.options" idkey="marker.idKey">
+				        </ui-gmap-marker>      
+					    </ui-gmap-google-map>
+
+					</div>
+					<div class="col-sm-6">
+					    <div class="thumbnail">
+					      	<div class="caption">
+			    				<div class="title">Detalles de la actividad: </div>
+						        <p ng-if="actividad != undefined" class="cuerpo">
+									<b>Requerimientos:</b> {{actividad.requerimientosActividad}}<br>
+									<b>Cantidad maxima de participantes:</b> {{actividad.personasMaximas}}<br>
+									<b>Fecha de inicio:</b> {{formatearFechaInicio(actividad.fechaInicio)}}<br>
+									<b>Duración estimada:</b> {{formatearDuracionEstimada(actividad.duracionEstimada)}}<br>
+								</p>
+
+								<div class="buttons" ng-show="participacion_usuario != undefined" >
+									<a ng-click="volver();" class="btn btn-primary" role="button">Volver</a> 
+								    <a ng-show="!participacion_usuario" ng-click="confirmarParticipacion();" class="btn btn-success" role="button">Participar</a> 
+								    <a ng-show="participacion_usuario" ng-click="cancelarParticipacion();" class="btn btn-danger" role="button">Cancelar Participación</a>
+							    </div>
+				      		</div>
+					    </div>
+
+					</div>	
+				</div>
+			</div>
+        </div>
+    </div>
+
+</div>
+
+
+

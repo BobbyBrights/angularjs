@@ -1,0 +1,119 @@
+
+.main {
+  margin: 150px auto 0px auto;
+  width: 350px;
+  border-radius: 15px;
+
+}
+
+.main-screen {
+  padding: 20px;
+  border-radius: 5px
+}
+
+.main-head{
+  margin-bottom: 15px;
+  -webkit-user-select: none;  
+  -moz-user-select: none;    
+  -ms-user-select: none;      
+  user-select: none;
+  cursor: default;
+}
+
+.main-title {
+  text-align: center;
+  color: white;
+  font-family: 'Lobster';
+  font-size: 80px;
+}
+
+.main-title-u{
+  color: rgb(255, 179, 50);
+  font-weight: bold;
+}
+
+.main-subtitle {
+  text-align: center;
+  color: white;
+  font-family: AvenirPro_DemiCnIt;
+  font-weight: bold;
+  font-size: 17px;
+}
+
+.main-subtitle h1, 
+.main-subtitle h2,
+.main-subtitle h3,
+.main-subtitle h4,
+.main-subtitle h5,
+.main-subtitle a{
+  font-family: AvenirPro_DemiCnIt;
+  color:white;
+}
+
+.main a.btn{
+  font-family: AvenirPro_Cn;
+  font-weight: bolder;
+}
+
+.login-form {
+text-align: center;
+}
+
+.control-group {
+margin-bottom: 10px;
+}
+
+input {
+  text-align: center;
+  background-color: #ECF0F1;
+  border: 2px solid transparent;
+  border-radius: 3px;
+  font-size: 16px;
+  font-weight: 200;
+  padding: 10px 0;
+  width: 250px;
+  transition: border .5s;
+}
+
+input:focus {
+  border: 2px solid #3498DB;
+  box-shadow: none;
+}
+
+
+
+.main_xl {
+  width: 500px;
+  margin: 50px auto 0px auto;
+}
+
+.main_xl .SignUpForm_Second .input-group-addon{
+  min-width: 150px;
+  font-family: AvenirPro_Cn;
+  font-weight: bolder;
+  letter-spacing: 1px;
+}
+
+.main_xl .SignUpForm_Second input{
+  text-align: left;
+  padding-left: 20px;
+  font-family: AvenirPro_Cn
+}
+
+.main_xl .SignUpForm_Second select{
+  padding-left: 20px;
+  font-family: AvenirPro_Cn
+}
+
+.main_xl .SignUpForm_Second select option.placeholder{
+  font-weight: bolder;
+}
+
+.hide {
+    display: none;
+}
+
+.margin-bottom-0{
+  margin-bottom: 0px;
+}
+

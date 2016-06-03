@@ -1,0 +1,78 @@
+<div ng-controller="logInController">
+	<div name="vista_solicitud" ng-show="partA" class="main">
+
+	    <div class="main-screen">
+
+	      	<div class="main-head">
+		        <div class="main-title">
+		          Recre<span class="main-title-u">U</span>
+		        </div>
+
+		        <div class="main-subtitle">
+		          "Explora nuevas actividades y participa de experiencias inolvidables"
+		        </div>
+	      	</div> 
+
+			<div class="alert alert-danger" ng-class="{'hide': error_general_visible}">
+			  <strong>Error: </strong>{{ msg_error_general }}
+			</div>
+
+	      	<form name="getLogIn" ng-submit="postLogIn()" >
+
+	      		<div name="input_correo_electronico">
+
+		      		<label class="alert-input-message" ng-class="{'hide': correo_usuario_valido}">{{correo_usuario_error_msg}}</label>
+
+					<div class="input-group bottom_separator_small">
+					  	<span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+					  	<input ng-model="correo_usuario" name="input_correo_usuario" type="text" class="form-control" placeholder="Correo Institucional"></input>
+						<span class="input-group-addon">@usach.cl</span>
+					</div>
+
+				</div>
+
+				<div name="input_password">
+
+		      		<label class="alert-input-message" ng-class="{'hide': password_usuario_valido}">{{password_usuario_error_msg}}</label>
+
+
+					<div class="input-group bottom_separator_small">
+					  <span class="input-group-addon"><i class="fa fa-key fa-1"></i></span>
+					  <input ng-model="password_usuario" type="password" class="form-control" placeholder="Contraseña"></input>
+					</div>
+
+				</div>
+
+		      	<div class="btn-group btn-group-justified " role="group" aria-label="...">
+
+			      	<a class="btn btn-danger" ng-click="go('')"><span class="glyphicon glyphicon-chevron-left" style="margin-right: 15px;"></span>VOLVER</a>
+
+			      	<a class="btn btn-success" ng-click="submitForm_LogIn()">INGRESAR<span class="glyphicon glyphicon-chevron-right" style="margin-left: 15px;"></span></a>
+
+		      	</div>
+			</form>
+
+
+	    </div>
+	</div>
+
+	<div  name="vista_mensaje_exito" ng-show="partB" class="main">
+
+	    <div class="main-screen">
+
+	      	<div class="main-head">
+		        <div class="main-title">
+		          Recre<span class="main-title-u">U</span>
+		        </div>
+
+		        <div class="main-subtitle">
+		          <h1>"Has sido identificado por el sistema!"</h1>
+		          <h5>En unos momentos serás redirigido a la ventana de exploración. Tambien puedes ser redirigido manualmente presionando el siguiente enlace <a ng-click="go('/explora');">[x].</a></h5>
+		        </div>    
+	      	</div> 
+
+	    </div>
+	</div>
+
+
+</div>

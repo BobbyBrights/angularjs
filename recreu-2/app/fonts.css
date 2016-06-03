@@ -1,0 +1,31 @@
+
+@font-face {
+  font-family: 'AvenirPro_Demi';
+  src: url('/fonts/Avenir/AvenirNextLTPro-Demi.otf')  format('opentype');
+}
+
+@font-face{
+  font-family: 'AvenirPro_Cn';
+  src: url('/fonts/Avenir/AvenirNextLTPro-Cn.otf')  format('opentype');
+}
+
+@font-face{
+  font-family: 'AvenirPro_HeavyCn';
+  src: url('/fonts/Avenir/AvenirNextLTPro-HeavyCn.otf')  format('opentype');
+}
+
+@font-face{
+  font-family: 'AvenirPro_DemiCnIt';
+  src: url('/fonts/Avenir/AvenirNextLTPro-DemiCnI.otf')  format('opentype');
+}
+
+@font-face {
+  font-family: 'Lobster';
+  src: url('/fonts/Lobster-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'AvenirNextLTPro-HeavyCn';
+  src: url('/fonts/Avenir/AvenirNextLTPro-HeavyCn.otf');
+}
+
