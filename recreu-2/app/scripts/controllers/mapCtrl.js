@@ -17,9 +17,6 @@ app.controller('mapCtrl', ['$scope', function ($scope) {
 		}
 	};
 
-
-
-
 	$scope.map = {
 		center: {
 			latitude: -33.447804, 

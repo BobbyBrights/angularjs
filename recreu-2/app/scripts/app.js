@@ -19,17 +19,24 @@
           }
           else {
 
-            if(next.templateUrl == 'views/log_in.html' || next.templateUrl == 'views/sign_up.html' || next.templateUrl == 'views/main.html'  ) { 
+            if(next.templateUrl == 'views/log_in.html' || next.templateUrl == 'views/sign_up.html' || next.templateUrl == 'views/main.html'  ) {              
               $location.path('explora');
+              }
+ 
+            }        
 
+              //restricciones de pagina de administrador
+              if($cookieStore.get('esAdministrador')==false )
+              {
 
+                    console.log('oe ya po ctmare');
 
-             //$scope.go("/'log_in'");
-            }         /* opcion para manejar administradores (no implementada)
-            var usuario = $cookieStore.get('usuario');
+                    //incluir en este if las paginas que solo puede ver el administrador
+                   if(next.templateUrl == 'views/reportes.html')
+                   {
+                        $location.path('explora');
+                   }
 
-            if(next.templateUrl == 'views/inicio.html' || usuario.admin!= 1) {
-              $location.path('/tareas');*/
             }
           
         })
@@ -84,7 +91,6 @@
             templateUrl: 'views/reportes.html',
             controller: 'reportesCtrl' ,
         })
-
 
 
 

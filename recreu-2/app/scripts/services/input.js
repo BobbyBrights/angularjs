@@ -197,7 +197,6 @@
         }  
 
 
-
         input.servicioEliminarUsuario = function(int)
         {
             var servicio = "usuarios/";

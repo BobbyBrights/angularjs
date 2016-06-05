@@ -69,14 +69,43 @@
               <div name="input_fecha_actividad">
                 <div class="input-group bottom_separator_small" ng-class="{'has-error': !fecha_actividad_valido}">
                   <span class="input-group-addon xl">Fecha (*): </span>
-                  <input class="form-control" data-format="yyyy-MM-dd" type="date"  >
+                  <input ng-model="nuevaActividad.fecha" class="form-control" data-format="yyyy-MM-dd" type="date"  >
                 </div>
               </div>
 
-              <div name="input_duracion_actividad">
-                <div class="input-group bottom_separator_small" ng-class="{'has-error': !duracion_actividad_valido}">
+              <div name="input_horario_actividad">
+                <div class="input-group bottom_separator_small" ng-class="{'has-error': !horario_valido}">
                   <span class="input-group-addon xl">Horario (*): </span>
-                  <input  class="form-control" time-format="hh:mm:ss" type="time"  >
+                  <input  ng-model="nuevaActividad.horario" class="form-control" time-format="hh:mm:ss" type="time"  >
+                </div>
+              </div>
+
+
+
+              <div name="input_duracion_actividad">
+               <div class="input-group bottom_separator_small" style="    background-color: white;
+    border-color: black;
+    border: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    border-color: #CCCCCC;">
+                  <span class="input-group-addon xl">Duración (*): </span>
+                  <div style="margin: 0px 4%; width: 92%">
+                    <!-- Hora -->
+                    <div class="row">
+                      <label class="col-sm-3 form-control-label" style="text-align: center;
+      padding-top: 8px;">Horas:  {{nuevaActividad.horas}} </label>
+                      <input class="col-sm-9 inputlike"  type="range"  min="0" max="23" ng-model="nuevaActividad.horas" >
+                    </div>
+
+                    <!-- Minutos -->
+                    <div class="row">
+                     <label class="col-sm-3 form-control-label" style="text-align: center;
+      padding-top: 8px;" ng-model="nuevaActividad.minutos">Minutos: {{nuevaActividad.minutos}}</label>
+                     <input class="col-sm-9 inputlike" style="margin-bottom: 5px;" type="range"  min="0" max="59" ng-model="nuevaActividad.minutos" >
+                   </div>
+
+                  </div>
                 </div>
               </div>
 
@@ -92,7 +121,7 @@
               <div name="input_tipo_actividad" ng-if="catId!=null">
                 <div class="input-group bottom_separator_small" ng-class="{'has-error': !tipo_actividad_valido}">
                   <span class="input-group-addon xl">Tipo de actividad (*): </span>
-                  <select class="form-control" ng-model = "tipId" ng-click ="nuevaActividad.tipoId=tipId[0];">
+                  <select class="form-control" ng-model="tipId" ng-click ="nuevaActividad.tipoId=tipId;">
                    <option ng-repeat = "tip in tipos" value={{tip.tipoId}} class="form-control non-resizable" rows="5"d > {{tip.tipo}} 
                    </option>
                    </select>                
@@ -109,7 +138,9 @@
                             options="map.options" 
                             control="map.control"
                             events="map.events" 
-                            class="main-container" >
+                            class="main-container" 
+                            ng-click ="nuevaActividad.ubicacionActividadX = marker.coords.latitude; nuevaActividad.ubicacionActividadY = marker.coords.longitude ;" >
+                            >
                       <ui-gmap-marker coords="marker.coords"  options="marker.options" idkey="marker.id" ></ui-gmap-marker>      
                       </ui-gmap-google-map>
                   </div>

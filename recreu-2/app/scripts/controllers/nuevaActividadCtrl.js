@@ -18,14 +18,12 @@
 	// 	Mensajes de error formulario:
 		$scope.titulo_actividad_valido = true;
 		$scope.titulo_actividad_msg_error = "undefined";
-
 		$scope.ctdad_participantes_valido = true;
 		$scope.ctdad_participantes_msg_error = "undefined";
-
 		$scope.requisitos_actividad_valido = true;
 		$scope.descripcion_actividad_valido = true;
 		$scope.fecha_actividad_valido = true;
-		$scope.duracion_actividad_valido = true;
+		$scope.horario_valido = true;
 		$scope.categoria_actividad_valido = true;
 		$scope.tipo_actividad_valido = true;
 		$scope.ubicacion_actividad_valido = true;
@@ -42,17 +40,50 @@
 
 		$scope.nuevaActividad = {};
 		$scope.exito = -1 ;
+
+		$scope.nuevaActividad.horas=0;
+		$scope.nuevaActividad.minutos=0;
+
+		$scope.nuevaActividad.fechaInicio = new Date();
+		$scope.nuevaActividad.fecha = null;
+		$scope.nuevaActividad.horario = null;
+
+
+		$scope.nuevaActividad.ubicacionActividadX = -33.447804;
+		$scope.nuevaActividad.ubicacionActividadY = -70.682473;
+
 		$scope.tipos = [];
 
 		$scope.crearActividad = function()
 		{
 
-			console.log($scope.tipoId);
-			var objJson = {
+			var anno = $scope.nuevaActividad.fecha.getFullYear();
+			var mes = $scope.nuevaActividad.fecha.getMonth() + 1 ;
+			var dia = $scope.nuevaActividad.fecha.getDay() ; 
 
+			var hora = $scope.nuevaActividad.horario.getHours();	
+			var minuto = $scope.nuevaActividad.horario.getMinutes();
+
+			if(mes<10){mes = "0" + mes}
+			if(dia<10){dia = "0" + dia}
+			if(hora<10){hora = "0" + hora}
+			if(minuto<10){minuto= "0" + minuto}
+
+
+			if($scope.nuevaActividad.minutos<10){$scope.nuevaActividad.minutos = "0" + $scope.nuevaActividad.minutos}
+			if($scope.nuevaActividad.horas<10){$scope.nuevaActividad.horas = "0" + $scope.nuevaActividad.horas}
+
+			$scope.nuevaActividad.fechaInicio = anno + "-" + mes + "-" + dia + "T" + hora + ":" + mes + ":00-03:00" ;
+			$scope.nuevaActividad.duracionEstimada = $scope.nuevaActividad.horas + ":" + $scope.nuevaActividad.minutos + ":00"
+
+
+			console.log("duracionEstimada", $scope.nuevaActividad.duracionEstimada);
+			console.log($scope.nuevaActividad.fechaInicio);
+
+			var objJson = {
    					cuerpoActividad: $scope.nuevaActividad.cuerpoActividad,
-					duracionEstimada:  "02:01:15",
-    				fechaInicio:  "2016-05-02T08:15:03-03:00",
+					duracionEstimada:  $scope.nuevaActividad.duracionEstimada,
+    				fechaInicio:  $scope.nuevaActividad.fechaInicio,
     				requerimientosActividad: $scope.nuevaActividad.requerimientosActividad ,
    					tipo: {
        							tipoId:  $scope.nuevaActividad.tipoId,
@@ -72,7 +103,7 @@
 			input.servicioCrearActividad(objJson).success(function(data,status){
 			$scope.exito = 1;
 			input.servicioObtenerActividades();
-			$scope.go("/explora");
+			$scope.go("explora");
 				
 
 				}).error(function(error,status)
