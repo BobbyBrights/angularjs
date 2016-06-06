@@ -33,6 +33,8 @@
 		
 		$scope.volver = function(){ $scope.go('explora'); }		
 
+		$scope.verPerfil = function(perfilId){$scope.go("/verPerfil/perfil=" + perfilId); }
+
 	// Datos de la actividad:
 
 		$scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };

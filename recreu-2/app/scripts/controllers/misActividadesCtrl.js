@@ -76,14 +76,52 @@
 
 		$scope.obtenerActividadesOrganizador = function(){
 
-			//el web service aun no tiene implementado el obetener actividades que organizo un usuario y solo devuelve un json con el organizador
-			//input.servicioObtenerActividadesUsuarioId($cookieStore.get('usuarioId')).
-			input.servicioObtenerActividadesOrganizadorId($cookieStore.get('usuarioId')).
+			//el web service aun no tiene implementado el obetener actividades que organizo un usuario y solo devuelve un json con el organizador , asi que
+			//por mientras se hace a la mala , en caso se implementarse descomentar el la linea de abajo y boorrar todo lo otro
+
+			//input.servicioObtenerActividadesOrganizadorId($cookieStore.get('usuarioId')).
+
+
+			input.servicioObtenerActividadesUsuarioId($cookieStore.get('usuarioId')).
+			//input.servicioObtenerActividadesOrganizadorId($cookieStore.get('usuarioId')).
 
 
 			then(function(response){
-				$scope.actividades = response.data;
-				
+
+				//$scope.actividades = response.data; (descomentar en caso de implementar el webservise)
+
+				var todasActividades = response.data; //eliminar en caso de implementar el webservice
+				$scope.actividades = []; //eliminar en caso de implementar el webservice
+
+
+				var j = 0;
+				//eliminar todo el for en caso de implementar el webservice
+				for(var i = 0  ; i < todasActividades.length; i++)
+				{
+
+					console.log("AGGGGG TAMAREEEEE");
+					console.log(todasActividades[i].organizador.usuarioId);
+					console.log("v/s");
+					console.log($cookieStore.get('usuarioId'));
+
+					if(todasActividades[i].organizador.usuarioId==$cookieStore.get('usuarioId'))
+					{
+						
+						console.log("entra");
+
+						// NO USAR PUSHH , POR ALGUNA RAZON DESCONOCIDA EXPLOTAAAAA XD
+						$scope.actividades[j] = todasActividades[i];
+						j++;
+
+					}
+					
+				}
+
+
+
+				console.log($scope.actividades);
+				console.log("sigue?");
+									
 
 				$scope.indice_row_actividades = [];
 				for (var i = 0; i < $scope.actividades.length; i++) {
@@ -124,16 +162,17 @@
 				var todasActividades= response.data
 				$scope.actividades = [];
 
+				var j = 0;
 
 				for(var i = 0; i < todasActividades.length; i++)
 				{
 					if(todasActividades[i].esActivo)
 					{
-						//$scope.actividades.push(todasActividades[i]);
 						// NO USAR PUSHH , POR ALGUNA RAZON DESCONOCIDA EXPLOTAAAAA XD
 						console.log('actividades sin filtrar')
 						console.log(todasActividades[i])
-						$scope.actividades[i] = todasActividades[i];
+						$scope.actividades[j] = todasActividades[i];
+						j++;
 
 					}
 					
@@ -162,7 +201,7 @@
 				}
 				console.log("Actividades filtradas por atributo esActivo :", $scope.actividades);
 				console.log("Row de actividades:", $scope.indice_row_actividades);
-				//$scope.$apply();
+
 
 			});
 		}

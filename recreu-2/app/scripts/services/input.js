@@ -254,6 +254,14 @@
         }
 
 
+        input.servicioObtenerUsuarioId = function(int){
+            var servicio = "usuarios/" + int ;
+            var url = url_base + servicio;
+            console.log(url);
+            return $http.get(url)
+        }  
+
+
 
 
 

@@ -86,9 +86,11 @@
             				<td>{{u.primerNombre + " " + u.apellidoPaterno + " " + u.apellidoMaterno}}</td>
             				<td>{{u.intereses}}</td>
             				<td>
-            					<button type="button" class="btn btn-info"   ng-click ="" >ver perfil </button>
+            					<button type="button" class="btn btn-info"   ng-click ="verPerfil(u.usuarioId);" >ver perfil </button>
             					<button type="button" class="btn btn-warning"   ng-click ="">reportar </button>
             					<button type="button" class="btn btn-danger"   ng-click ="expulsarUsuario(u.usuarioId);" ng-if="comprobarOrganizador();">expulsar! </button>
+
+                      
 
             				</td>
        	 				</tr>
