@@ -14,6 +14,8 @@
 
 		// Barra de navegación:
 		$scope.nombre_usuario = $cookieStore.get('primerNombre') + " " + $cookieStore.get('apellidoPaterno');
+		$scope.esAdmin= $cookieStore.get('esAdministrador');
+
 
 	// 	Mensajes de error formulario:
 		$scope.titulo_actividad_valido = true;
@@ -37,6 +39,9 @@
 			$scope.configuraciones = function(){ $scope.go('configuraciones'); };
 
 			$scope.salir = function (){ input.servicioCerrarSesion(); $scope.go(''); };
+
+			$scope.reportes = function(){ $scope.go("/reportes");}
+
 
 		$scope.nuevaActividad = {};
 		$scope.exito = -1 ;

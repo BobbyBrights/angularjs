@@ -13,6 +13,7 @@
 		
 		// Datos del usuario 
 		$scope.nombre_usuario = "Nombre por defecto";
+		
 
 
 		$scope.go = function ( path ) {

@@ -20,6 +20,7 @@
 
 		// Barra de navegación:
 		$scope.nombre_usuario = $cookieStore.get('primerNombre') + " " + $cookieStore.get('apellidoPaterno');
+		$scope.esAdmin= $cookieStore.get('esAdministrador');
 
 
 	// Funciones para los botones:
@@ -37,6 +38,9 @@
 		$scope.mostrarTodos = function(){ $scope.go("/explora");}
 
 		$scope.cambiarCategoria = function(categoria){$scope.go("/explora/categoria="+categoria);}
+
+		$scope.reportes = function(){ $scope.go("/reportes");}
+
 
 	// Busqueda:
 		$scope.parametros_busqueda = "";

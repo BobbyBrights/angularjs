@@ -20,14 +20,72 @@
                   <li ng-class="{'active': btn_notificaciones_selected}" ng-click="go('explora/mis_notificaciones');">
                     <a><i class="fa fa-exclamation-circle fa-1" style="margin-right: 15px"></i>Mis Notificaciones</a>
                   </li>  
+
+                  <li class="dropdown open">
+                  <ul class="dropdown-menu" style="margin-top: 20px;"> 
+                    <li class="dropdown-header">Tus actividades!  </li>
+                    <li ng-click="obtenerActividades(); b1=true; b2=false; b3=false;" ng-class="{'active': b1}" ><a> Todas </a>
+                    <li ng-click="obtenerActividadesOrganizador(); b2=true; b1=false; b3=false"  ng-class="{'active': b2}" ><a>Organizador</a></li>
+                    <li ng-click="obtenerActividadesPendientes(); b3=true ; b2=false ;b1=false" ng-class="{'active': b3}"><a>Pendientes</a></li>
+                  </ul>
+                  </li>
+
+
+
                 </ul>
               </div>           
           </nav>
         </div>
 
+
+       
         <div class="col-sm-9 col-lg-10" style="padding: 0px">
             <div ng-include="'views/componentes/jumbotron-sidenav.html'"></div>
+
+            <div class="contenedor" infinite-scroll="agregarMasActividades()">
+
+              <div class="row">
+
+                    <div class="col-md-12">
+
+                        <div class="row" ng-repeat="t in indice_row_actividades" >
+
+                            <div ng-repeat="a in actividades.slice(t, t+3)" class="col-sm-4 col-lg-4 col-md-4">
+                                  <div  popover-append-to-body="true" 
+                                        class="thumbnail actividad" 
+                                        popover-placement="bottom" uib-popover="{{formatear_popover(a)}}" 
+                                        popover-trigger="mouseenter"
+                                        ng-click="verActividad(a.actividadId)">
+
+                                    <div class="titulo">{{ a.tituloActividad }}</div>
+
+                                    <div class="imagen">
+                                      <img ng-src="images/categorias/{{a.tipo.categoria.nombreCategoria}}/{{ a.tipo.tipo}}.png" alt={{a.tipo.tipo}}>
+                                    </div>
+
+                                    <div class="cuerpo">
+                                        {{ a.tipo.tipo }}<br>
+                                        {{ funcion(a.fechaInicio) }}
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+              </div>
+
+            </div>
+
         </div>
+
+
+
+
+
     </div>
 
 </div>

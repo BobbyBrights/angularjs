@@ -221,6 +221,41 @@
             return $http.get(url)
         }  
 
+        //agregados despues del primer sprint:
+
+
+        input.servicioObtenerActividadesUsuarioId = function(int){
+            var servicio = "usuarios/" + int + "/actividades";
+            var url = url_base + servicio;
+            return $http.get(url)
+        }
+
+
+        input.servicioObtenerActividadesOrganizadorId = function(int){
+            var servicio = "usuarios/" + int + "/?organizador";
+            var url = url_base + servicio;
+            return $http.get(url)
+        }
+
+
+        
+        input.servicioObtenerActividadesPendientes = function(int){
+            var servicio = "usuarios/" + int + "/actividades";
+            var url = url_base + servicio;
+            var acts = $http.get(url);
+            return $http.get(url)
+        }
+
+        input.servicioObtenerUsuariosActividadId = function(int){
+
+            var servicio = "actividades/" + int + "/usuarios";
+            var url = url_base + servicio;
+            return $http.get(url)
+        }
+
+
+
+
 
         return input;
     });

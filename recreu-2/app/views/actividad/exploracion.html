@@ -24,10 +24,8 @@
                   <li class="dropdown open">
                   <ul class="dropdown-menu" style="margin-top: 20px;"> 
                     <li class="dropdown-header">Filtrar por categorías: </li>
-                    <li ng-click="mostrarTodos();" ng-class="{'active': categoria_seleccionada
- == undefined}"><a> Todas las categorías</a>
-                    <li ng-repeat="x in categorias" ng-class="{'active': categoria_seleccionada
- == x.nombreCategoria}" ng-click="cambiarCategoria(x.nombreCategoria)"><a>{{ x.nombreCategoria }}</a></li>
+                    <li ng-click="mostrarTodos();" ng-class="{'active': categoria_seleccionada == undefined}"><a> Todas las categorías</a>
+                    <li ng-repeat="x in categorias" ng-class="{'active': categoria_seleccionada == x.nombreCategoria}" ng-click="cambiarCategoria(x.nombreCategoria)"><a>{{ x.nombreCategoria }}</a></li>
                   </ul>
                   </li>
 
@@ -59,7 +57,7 @@
                                         popover-trigger="mouseenter"
                                         ng-click="verActividad(a.actividadId)">
 
-                                    <div class="titulo">{{ a.tituloActividad }}</di>
+                                    <div class="titulo">{{ a.tituloActividad }}</div>
 
                                     <div class="imagen">
                                       <img ng-src="images/categorias/{{a.tipo.categoria.nombreCategoria}}/{{ a.tipo.tipo}}.png" alt={{a.tipo.tipo}}>

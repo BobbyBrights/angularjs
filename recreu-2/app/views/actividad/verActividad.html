@@ -63,11 +63,41 @@
 							    </div>
 				      		</div>
 					    </div>
-
 					</div>	
 				</div>
+
+
+		<!-- AGREGADA LISTA DE USUARIOS-->
+				<p></p>
+				<div class="title" ><font size=8 >Lista de Participantes </font></div>
+	
+   				<table class="table" >
+    					<thead>
+        					<tr>
+            					<th> Correo</th>
+            					<th> Nombre completo</th>
+            					<th> Intereses</th>
+            					<th > Opciones</th>
+        					</tr>
+    					</thead>
+     				<tbody ng-repeat="u in usuarios" >
+        				<tr>
+        	    			<td>{{u.correo}} </td>
+            				<td>{{u.primerNombre + " " + u.apellidoPaterno + " " + u.apellidoMaterno}}</td>
+            				<td>{{u.intereses}}</td>
+            				<td>
+            					<button type="button" class="btn btn-info"   ng-click ="" >ver perfil </button>
+            					<button type="button" class="btn btn-warning"   ng-click ="">reportar </button>
+            					<button type="button" class="btn btn-danger"   ng-click ="expulsarUsuario(u.usuarioId);" ng-if="comprobarOrganizador();">expulsar! </button>
+
+            				</td>
+       	 				</tr>
+  	    			</tbody>
+	   			</table>
+
 			</div>
         </div>
+        <!-- o por aca-->
     </div>
 
 </div>

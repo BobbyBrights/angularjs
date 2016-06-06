@@ -16,6 +16,8 @@
 
 		// Datos del usuario 
 		$scope.nombre_usuario = $cookieStore.get('primerNombre') + " " + $cookieStore.get('apellidoPaterno');
+		$scope.esAdmin= $cookieStore.get('esAdministrador');
+
 
 		$scope.go = function ( path ) {
 			console.log(path);
@@ -37,6 +39,9 @@
 			console.log(">> Desloguear actual sesión de usuario");
 			sesionUsuarioCtlr.cerrarSesion();
 		};
+
+		$scope.reportes = function(){ $scope.go("/reportes");}
+
 
 		// Busqueda:
 		$scope.parametros_busqueda = "";

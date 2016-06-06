@@ -74,6 +74,10 @@
             templateUrl: 'views/actividad/mis_actividades.html',
             controller: 'misActividadesController'
         })
+         .when('/explora/mis_actividades/organizador',{
+            templateUrl: 'views/actividad/mis_actividades.html',
+            controller: 'misActividadesController'
+        })
         .when('/explora/mis_notificaciones',{
             templateUrl: 'views/actividad/mis_notificaciones.html',
             controller: 'misNotificacionesController'

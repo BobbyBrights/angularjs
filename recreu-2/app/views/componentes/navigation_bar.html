@@ -20,6 +20,9 @@
           <ul uib-dropdown-menu>
             <li title="Organiza tu propia nueva actividad"><a ng-click="nueva_actividad();"><i class="fa fa-plus-circle fa-1" style="margin: 0px 10px;"></i>Nueva Actividad</a></li>
             <li title="Configura tus preferencias personales"><a ng-click="configuraciones();"><i class="fa fa-wrench fa-1" style="margin: 0px 10px;"></i>Configuraciones</a></li>
+            
+            <li title="Acceda a las opciones de administración"><a ng-click="reportes();"  ng-if="esAdmin==true" ><i class="fa fa-legal fa-1" style="margin: 0px 10px;"></i>Admimistracion</a></li>
+             
             <li role="separator" class="divider"></li>
             <li title="Deslogueate del sistema"><a ng-click="salir();"><i class="fa fa-sign-out fa-1" style="margin: 0px 10px;"></i>Salir</a></li>
           </ul>

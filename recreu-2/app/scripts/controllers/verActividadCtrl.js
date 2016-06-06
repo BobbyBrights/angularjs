@@ -14,6 +14,8 @@
 
 		// Barra de navegación:
 		$scope.nombre_usuario = $cookieStore.get('primerNombre') + " " + $cookieStore.get('apellidoPaterno');
+		$scope.esAdmin= $cookieStore.get('esAdministrador');
+
 		
 		// Variables relevantes:
 		var actividadId = $routeParams.actividadId;
@@ -86,14 +88,54 @@
 		// Cancelar participación del usuario:
 		$scope.cancelarParticipacion = function(){
 			input.servicioCancelarParticipacion(usuarioId_actual, actividadId)
-			.then(function(response){ $scope.participacion_usuario = false; });
+			.then(function(response){ $scope.participacion_usuario = false;
+			 						  $scope.actualizarUsuarios();});
+
 		}
 
 		// Confirmar participación del usuario:
 		$scope.confirmarParticipacion = function(){
 			input.servicioConfirmarParticipacion(usuarioId_actual, actividadId)
-			.then(function(response){ $scope.participacion_usuario = true; });
+			.then(function(response){ $scope.participacion_usuario = true; 	
+									  $scope.actualizarUsuarios();});
+
 		}
+
+
+		//agregado: actualizar la lista de usuarios
+		$scope.usuarios = [];
+
+		$scope.actualizarUsuarios = function()
+		{
+			input.servicioObtenerUsuariosActividadId(actividadId).success(function(data,status){
+			$scope.usuarios= data;
+
+			});
+
+		}
+
+		//agregado: comprobar si el usuario actual es organizador de la actividad (true/false)
+
+		$scope.comprobarOrganizador = function()
+		{
+
+			if($scope.actividad.organizador.usuarioId==usuarioId_actual){return true;}
+			else{return false;}
+		
+		}
+
+		//agregado: expulsion de un usuario de la actividad
+		$scope.expulsarUsuario = function(idExpulsado){
+			input.servicioCancelarParticipacion(idExpulsado, actividadId)
+			.then(function(response){ $scope.actualizarUsuarios();});
+
+		}
+
+
+
+		$scope.actualizarUsuarios();
+
+
 
 
 });
